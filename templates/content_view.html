@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="">{{article.title}}</h1>
+<p>{{article.contents}}</p>
+<span><p>{{article.pub_date}}</p></span>
+<span><a href="">{{article.author}}</a></span><br>
+
+{%if article.author.id == user.id or user.is_superuser == 1 %}
+    <a class="btn btn-danger mt-3 " onclick="checkDelete()" >Maqolani ochirish</a>
+    <p hidden ><a id="submited" href="{% url 'delete_articls' article.id %}"></a></p>
+{%endif%}
+
+
+{% endblock content %}

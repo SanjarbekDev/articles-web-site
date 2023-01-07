@@ -1,0 +1,14 @@
+{%extends 'base.html'%}
+{% load crispy_forms_tags %}
+
+{% block title %}kirish{% endblock title %}
+
+{%block content%}
+    <h2>saytga kirish</h2>
+    <form method="POST">{%csrf_token%}
+        {{form|crispy}}
+        <button type="submit" class="btn btn-primary">kirish</button>
+
+    </form>
+
+{%endblock content%}
