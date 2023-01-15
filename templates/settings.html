@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<i class="fa-solid fa-circle-user fa-6x col-md-1"></i>
+<h2 class="col-md">{{user.username}}</h2>
+<div class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+</div>
+    <div class="row">
+        <div class="col-sm">
+            Username:
+        </div>
+        <div class="col-sm">
+            {{user.username}}
+        </div>  
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            Parol:
+        </div>
+        <div class="col-sm">
+            <a href="{%url 'password_change'%}"><i class="fa-regular fa-pen-to-square"></i></a>
+        </div>  
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            Isim familiya:
+        </div>
+        <div class="col-sm">
+            {{user.first_name}}&nbsp;{{user.last_name}}
+        </div>  
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            Email:
+        </div>
+        <div class="col-sm">
+            {{user.email}}
+        </div>  
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            role:
+        </div>
+        <div class="col-sm">
+            {%if user.is_staff == 1%}
+                admin
+            {%else%}
+                user
+            {%endif%}
+        </div>  
+    </div>
+
+    <a class="btn" href="{%url 'logout'%}"><i class="fa-solid fa-right-from-bracket"></i> Chiqish</a>
+
+
+
+{%endblock content%}

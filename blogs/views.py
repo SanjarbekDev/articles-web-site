@@ -5,6 +5,8 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect , HttpResponseNotFound
 
 
+
+
 # Create your views here.
 
 
@@ -57,8 +59,6 @@ def UpdateView(request, id):
 
 def ContentView(request, id):
     model = Articls.objects.get(id=id)
-    for _ in request.session.keys():
-        print(type(_))
     if request.user.is_authenticated == False:
         return  HttpResponseNotFound("hello")    
     
@@ -76,7 +76,7 @@ def DeleteArticle(request, id):
         return  HttpResponseNotFound("hello")    
     
     try:
-        if article.author.id == int(auth_user):
+        if article.author.id == int(auth_user) or request.user.is_superuser:
             article.delete()
     except:
         pass

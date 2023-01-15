@@ -1,0 +1,44 @@
+body{
+    /* min-height: 75rem !important; */
+    padding-top: 4.5rem !important;
+    
+}
+a{
+    text-decoration : none !important;
+}
+.home{
+    background-image: url('img/2350549.png');
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: 90% 25%;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+      padding-top: 2rem !important;
+    }
+    .home{
+        background-image: url('img/2350549.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center bottom;
+    }
+  }
+  
+  @media only screen and (min-width: 600px) and (max-width: 768px) {
+    body {
+      padding-top: 3rem !important;
+    }
+    .home{
+        background-image: url('img/2350549.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: bottom;
+    }
+  }
+  
+  @media only screen and (min-width: 768px) {
+    body {
+      padding-top: 4.5rem !important;
+    }
+  }

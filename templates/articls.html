@@ -3,7 +3,7 @@
 {% block content%}
 {% for article in articls %}
     <ul class="list-unstyled">
-        <li><h1><a class="content_title" href="{% url 'content_article' article.id %}">{{ article.title }}</a></h1></li>
+        <li><h1><a class="content_title" href="{% url 'content_article' article.id %}"><i class="fa-solid fa-bolt"></i> {{ article.title }}</a></h1></li>
         <li>{{ article.pub_date }}</li>
         <li>{{ article.author }}</li>
     </ul>

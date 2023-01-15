@@ -1,13 +1,13 @@
 {% load static %}
 
 
-
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>base</title>
+
+    <link  href="{% static 'style.css' %}" rel="stylesheet" type="text/css" >
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     
@@ -16,15 +16,14 @@
     <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
 
-         <!-- costom css -->
-    <link rel="stylesheet" href="{% static 'css/style.css'%}">
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css" integrity="sha384-QYIZto+st3yW+o8+5OHfT6S482Zsvz2WfOzpFSXMF9zqeLcFV0/wlZpMtyFcZALm" crossorigin="anonymous">
+         <!-- costom css -->    
 </head>
 <body class="">
 <div class="container-fluid">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
         <a class="navbar-brand" href="{% url 'home'%}">
-            <img src="{% static 'img/logo.png'%}" alt="Logo" width="30" height="25" class="d-inline-block align-text-top">
+            <i class="fa-solid fa-layer-group"></i>
             <span class="logo-naw">articles</span>
           </a>
 
@@ -36,10 +35,10 @@
           <ul class="navbar-nav ml-auto">
             {%if user.is_authenticated%}
             <li class="nav-item">
-                <a class="btn" href="{% url 'articls'%}">Maqolalar</a>
+                <a class="btn" href="{% url 'articls'%}"><i class="fa-solid fa-list-check"></i> Maqolalar</a>
             </li>
             <li class="nav-item mx-1">
-                <a class="btn " href="{% url 'create_article' %}">Maqola yaratish</a>
+                <a class="btn " href="{% url 'create_article' %}"><i class="fa-solid fa-square-plus"></i> Maqola yaratish</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
@@ -47,7 +46,7 @@
               </a>
               <div class="dropdown-menu dropdown-menu-lg-right">
                 <a class="dropdown-item disabled" href="#">{{user.username}}</a>
-                <a class="dropdown-item" href="#"><i class="fa-regular fa-gear"></i> Sozlamalar</a>
+                <a class="dropdown-item" href="{%url 'settings'%}"><i class="fa-regular fa-gear"></i> Sozlamalar</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{%url 'logout'%}"><i class="fa-solid fa-right-from-bracket"></i> Chiqish</a>
               </div>
@@ -96,6 +95,18 @@
         {% endblock content%}
         
     </header>
+
+    <div class="container-fluid">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+          <div class="col-md-4 d-flex align-items-center">
+            <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+                <i class="fa-solid fa-layer-group"></i>&nbsp;
+            </a>
+            <span class="text-muted">&copy; 2022 Sanjarbek Sodiqov, Inc</span>
+          </div>
+      
+        </footer>
+    </div>
 
         <!-- fontaweasome  -->
     <script src="{% static 'fontawesomefree/js/fontawesome.js' %}"></script>
