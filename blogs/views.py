@@ -4,7 +4,8 @@ from django.shortcuts import redirect
 from django.urls import reverse
 from django.http import HttpResponseRedirect , HttpResponseNotFound
 
-
+from django.views.generic.edit import UpdateView, DeleteView, CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 
 # Create your views here.
@@ -33,26 +34,40 @@ def CreateArticls(request):
 
     return render(request, template_name, {})
 
-def add(request):
 
-    if request.user.is_authenticated == False:
-        return  HttpResponseNotFound("hello")    
+class CreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
+    template_name = 'new_article.html'
+    model = Articls
+    fields = ('title','contents')
 
-    title = request.POST['title']
-    content = request.POST['content']
-    author = request.session['_auth_user_id']
-    model = Articls(
-        title,
-        content,
-        author
-    )
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+    # user superuser ekanini tekshirish
+    def test_func(self):
+        return self.request.user.is_superuser
+
+# def add(request):
+
+#     if request.user.is_authenticated == False:
+#         return  HttpResponseNotFound("hello")    
+
+#     title = request.POST['title']
+#     content = request.POST['content']
+#     author = request.session['_auth_user_id']
+#     model = Articls(
+#         title,
+#         content,
+#         author
+#     )
     
-    model.save()
-    id = model.id
-    try:
-        return HttpResponseRedirect(reverse('content_article', kwargs={'id' : id}))
-    except:
-        return HttpResponseRedirect(reverse('articls'))
+#     model.save()
+#     id = model.id
+#     try:
+#         return HttpResponseRedirect(reverse('content_article', kwargs={'id' : id}))
+#     except:
+#         return HttpResponseRedirect(reverse('articls'))
 
 def UpdateView(request, id):
     pass

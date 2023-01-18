@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     #other apps
     'crispy_forms',
     'fontawesomefree',
+    'ckeditor',
+    'ckeditor_uploader',
     #costom apps
     "blogs",
     "authapp",
@@ -111,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "UZ"
 
 TIME_ZONE = "UTC"
 
@@ -123,12 +125,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
 
-STATICFILES_DIRS = [ 
-    os.path.join(BASE_DIR, "static"), 
-    '/var/www/static/',
-]
+STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))]
+
+STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))
+
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -142,3 +145,20 @@ LOGOUT_REDIRECT_URL = "home"
 
 #crspy form varable
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+
+# media 
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = str(BASE_DIR.joinpath('media'))
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+    },
+}
+
+CKEDITOR_RESTRICT_BY_USER = True

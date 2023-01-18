@@ -2,7 +2,7 @@
 
 {% block content %}
 <h1 class="">{{article.title}}</h1>
-<p>{{article.contents}}</p>
+<p>{{article.contents| safe}}</p>
 <span><p>{{article.pub_date}}</p></span>
 <span><a href="">{{article.author}}</a></span><br>
 

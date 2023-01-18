@@ -1,15 +1,13 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
 
 {% block content %}
 <div class="col-md-8 ">
     <h1>Yangi maqola yaratish</h1>
-    <form action="add/" method="post" >{% csrf_token %} 
-        
-            <label class="form-label" for="title">title</label>
-            <input class="form-control" type="text" name="title">
-        
-            <label class="form-label"  for="content">text</label>
-            <textarea class="form-control" name="content"></textarea>
+    <form method="post" enctype="multipart/form-data">{% csrf_token %} 
+            {{ form.media }}
+            {{form | crispy}}
             
             <input class="btn btn-Success mt-3" type="submit" value="Save"> 
     </form>
